@@ -24,16 +24,29 @@ body{
 .input-layer{
     width: 100%;
     margin-top: 20px;
+    padding: 10px;
     display: flex;
+    gap: 10px;
+}
+.input-layer input{
+    flex-grow: 1;
 }
 .list-layer{
     width: 100%;
     margin-top: 20px;
+    padding: 10px;
+}
+.list-layer li {   
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 footer{
     width: 100%;
     font-size: 10px;
-    font-color: #7e7878;
+    color: #7e7878;
     padding: 10px;
     text-align: center;
 }
