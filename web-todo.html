@@ -11,8 +11,14 @@
         <main>
             <div class="task-list">
                 <header>
-                    <h1>Todo list</h1>
+                    <h1>Today's Tasks</h1>
                 </header>
+                    <h2>
+                        <script>
+                            let today = new Date();
+                            document.write(`${today.getFullYear()}Y ${today.getMonth()+1}M ${today.getDate()}D`);
+                        </script>
+                    </h2>
                 <div class="input-layer">
                     <input type="text" id="todo-input" placeholder="Add a new task">
                     <button id="add-btn">Add</button>
