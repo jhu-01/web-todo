@@ -19,7 +19,7 @@ function addTodo(){ //add-btn 동작 함수
     span.textContent = text;
 
     let deleteBtn = document.createElement('button');
-    deleteBtn.textContent = 'Delete';
+    deleteBtn.textContent = '🗑';
     deleteBtn.classList.add('del-btn');
     
     li.appendChild(checkbox);

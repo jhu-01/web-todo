@@ -16,25 +16,27 @@
                     <h2>
                         <script>
                             let today = new Date();
-                            document.write(`${today.getFullYear()}Y ${today.getMonth()+1}M ${today.getDate()}D`);
+                            document.write(`${today.getFullYear()}Y ${today.getMonth()+1 < 10 ? '0' + (today.getMonth()+1) : today.getMonth()+1}M ${today.getDate() < 10 ? '0' + today.getDate() : today.getDate()}D`);
+                            <!--오늘 날짜 표시-->
                         </script>
                     </h2>
                 <div class="input-layer">
-                    <input type="text" id="todo-input" placeholder="Add a new task">
-                    <button id="add-btn">Add</button>
+                    <input type="text" id="todo-input" placeholder="Add a new task...">
+                    <button id="add-btn">+</button>
                 <!-- todo-input 입력 내용 / add-btn 버튼 -->
                 </div> 
                 <ul id="todo-list" class="list-layer">
                     <li>
                         <input type="checkbox" class="checkbox">
                         <span>Study</span>
-                        <button class='del-btn'>Delete</button>
+                        <button class='del-btn'>🗑</button>
                     </li>
                     <li>
                         <input type="checkbox" class="checkbox">
                         <span>Work out</span>
-                        <button class='del-btn'>Delete</button>
+                        <button class='del-btn'>🗑</button>
                     </li>
+                     
                 </ul>
                 <!-- todo-list 목록-->
             </div>
