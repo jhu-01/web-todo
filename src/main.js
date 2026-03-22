@@ -91,18 +91,21 @@ function deleteTodo(event){
     // 변경된 todos 배열을 localStorage에 저장
     renderTodos(); // 변경된 todos 배열을 화면에 다시 렌더링
 }
-/*
-function doneTodo(event){
-    let li = event.target.parentElement;
-    let span = li.querySelector('span');
 
-    if (event.target.checked){
-        span.classList.add('done');
-    } else {
-        span.classList.remove('done');
+function doneTodo(event){
+
+    const li = event.target.parentElement;
+    const text = li.querySelector('span').textContent;
+
+    const todo = todos.find(todo => todo.content === text);
+    if (todo) {
+        todo.completed = event.target.checked; // 체크박스 상태에 따라 completed 속성 업데이트
     }
+    localStorage.setItem('todos', JSON.stringify(todos)); // 변경된 todos 배열을 localStorage에 저장
+    renderTodos(); // 변경된 todos 배열을 화면에 다시 렌더링
+    
 }
-*/
+
 todoList.addEventListener('click', function (event){
     if (event.target.classList.contains('del-btn')){
         deleteTodo(event);
