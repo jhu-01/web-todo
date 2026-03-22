@@ -5,12 +5,20 @@ let currentId = 0;
 //todos가 저장되는 배열과 ID를 위한 변수
 
 const saved = localStorage.getItem('todos');
+
 if (saved) {
     todos = JSON.parse(saved);
-    if (todos.length > 0) {
-        currentId = todos[todos.length - 1].id + 1; // ID 중복 방지
-    }
+} else {
+    todos = [
+        { id: 0, createdAt: new Date(), content: 'Study', completed: false },
+        { id: 1, createdAt: new Date(), content: 'Work out', completed: false }
+    ];
+    localStorage.setItem('todos', JSON.stringify(todos));
 }
+if (todos.length > 0) {
+    currentId = todos[todos.length - 1].id + 1; // ID 중복 방지
+}
+
 
 const todoInput = document.getElementById('todo-input');
 const addBtn = document.getElementById('add-btn');
@@ -72,14 +80,18 @@ todoInput.addEventListener('keypress', function(event){ //enter의 경우에도 
         addTodo();
     }
 });
-/*
-function deleteTodo(event){
-    if(event.target.classList.contains('del-btn')){
-        let li = event.target.parentElement;
-        li.remove();
-    }
-}
 
+function deleteTodo(event){
+    const li = event.target.parentElement;
+    const text = li.querySelector('span').textContent;
+
+    todos = todos.filter(todo => todo.content !== text); 
+    // content가 일치하지 않는 todo만 남김
+    localStorage.setItem('todos', JSON.stringify(todos)); 
+    // 변경된 todos 배열을 localStorage에 저장
+    renderTodos(); // 변경된 todos 배열을 화면에 다시 렌더링
+}
+/*
 function doneTodo(event){
     let li = event.target.parentElement;
     let span = li.querySelector('span');
@@ -90,7 +102,7 @@ function doneTodo(event){
         span.classList.remove('done');
     }
 }
-
+*/
 todoList.addEventListener('click', function (event){
     if (event.target.classList.contains('del-btn')){
         deleteTodo(event);
@@ -99,5 +111,5 @@ todoList.addEventListener('click', function (event){
         doneTodo(event);
     }
 });
-*/
+
 renderTodos();
